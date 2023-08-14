@@ -1,0 +1,145 @@
+.techs {
+  max-width: 1280px;
+min-height: 625px;
+padding: 92px 63px;
+  background-color: #272727;
+}
+.techs__container {
+  min-height: 415px;
+}
+.techs__title {
+  margin: 0 auto;
+  padding-bottom: 23px;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 27px;
+  letter-spacing: -0.04em;
+  border-bottom: 2px solid rgba(170, 170, 170, 0.6);
+
+}
+@media screen and ( max-width: 768px ) {
+  .techs__title{
+    margin: 20px 0px;
+
+
+  }
+  .techs{
+    min-height: 567px;;
+    margin-top: 44px;
+    padding: 70px 50px;
+  }
+}
+.techs__header {
+  margin: 90px auto 0px;
+  font-weight: 400;
+  font-size: 50px;
+  line-height: 58px;
+  text-align: center;
+  letter-spacing: -0.04em;
+  margin-bottom: 26px;
+}
+
+.techs__subtitle {
+  max-width: 460px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: -0.56px;
+  margin: 0 auto;
+  margin-bottom: 100px;
+}
+
+.techs__list-container {
+  display: flex;
+  justify-content: center;
+}
+
+.techs__list {
+  list-style-type: none;
+  display: flex;
+  justify-content: center;
+}
+
+.techs__list-item {
+  border-radius: 10px;
+  background: #303030;
+  width: 90px;
+  height: 60px;
+  margin-right: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.56px;
+}
+
+@media screen and ( max-width: 768px){
+.techs__subtitle{
+  font-size: 12px;
+  margin-bottom: 75px;
+}
+.techs__list{
+  padding: 0;
+}
+  .techs__list-item{
+    width: 84px;
+    height: 57px;
+    font-size: 12px;
+  }
+  .techs__header{
+    margin-top: 80px;
+    margin-bottom: 22;
+  }
+ }
+
+@media screen and (max-width: 500px ){
+  .techs{
+    padding: 50px 18px;
+  }
+  .techs__title {
+    font-size: 18px;
+  }
+  .techs__header{
+    font-size: 30px;
+    margin-top: 50px;
+  }
+  .techs__subtitle{
+    font-size: 11px;
+    margin-bottom: 42px;
+  }
+  .techs__list-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .techs__list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+      }
+
+      .techs__list-item {
+        width: calc(34% - 5px);
+        height: 57px;
+        margin: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        font-size: 12px;
+        letter-spacing: -0.56px;
+        background: #303030;
+        border-radius: 10px;
+      }
+      .techs__list-item:last-child {
+margin-left: 0px;
+
+      }
+
+}

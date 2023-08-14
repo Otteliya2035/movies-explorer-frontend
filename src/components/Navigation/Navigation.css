@@ -1,0 +1,29 @@
+.nav__link_contaner{
+    color: #FFF;
+    text-align: center;
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 16px;
+    margin: -72px -476px 0px 0px;
+    }
+    .nav__link__one{
+    margin-top: 20px;
+    margin-right: 10px;
+    }
+    .nav__link_two{
+      margin-top: 20px;
+      margin-right: 389px;
+      }
+      .nav__linK_three{
+        width: 100px;
+    height: 32px;
+    background-color: #313131;
+      }
+      .nav__link__one,
+    .nav__link_two,
+    .nav__link_three {
+      text-decoration: none;
+      color: #FFF;
+    }

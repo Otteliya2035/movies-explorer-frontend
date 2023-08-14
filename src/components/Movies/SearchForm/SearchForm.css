@@ -1,0 +1,30 @@
+.searchform__container {
+  display: flex;
+  align-items: center;
+}
+
+.searchform__input {
+  width: 1086px;
+  height: 50px;
+  border-radius: 8px;
+  background: #2F2F2F;
+  margin: 75px 14px 0px 60px;
+  padding: 16px 20px;
+}
+
+.searchform__button {
+  width: 44px;
+  height: 44px;
+  margin-top: 74px;
+  background-image: url("../../../images/find.svg");
+  background-size: cover;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+
+.searchform__input {
+  width: 654px;
+  margin: 72px 26px 0px 22px;
+}
+}

@@ -1,0 +1,41 @@
+.no-results {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px;
+  }
+
+  .no-results__title {
+    width: 400px;
+    color: #FFF;
+    text-align: center;
+    font-family: Inter;
+    font-size: 140px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-bottom: 5px;
+  }
+
+  .no-results__description {
+    width: 400px;
+    color: #FFF;
+text-align: center;
+font-family: Inter;
+font-size: 16px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+margin-bottom: 184px;
+  }
+  .no-results__back-link {
+    color: #4285F4;
+text-align: center;
+font-family: Inter;
+font-size: 14px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+    text-decoration: none;
+    
+  }
