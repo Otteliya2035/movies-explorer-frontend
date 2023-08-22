@@ -1,0 +1,37 @@
+.movies__card-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(4, auto);
+  gap: 10px 0px;
+  justify-content: center;
+  margin: 0 auto;
+  margin-top: 79px;
+}
+
+.movies__btn{
+  width: 320px;
+  height: 36px;
+  background-color: #424242;
+  color: #FFF;
+  text-align: center;
+  font-family: Inter;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+
+}
+
+@media screen and (max-width:1220px) {
+
+.movies__card_list {
+display: grid;
+grid-template-columns: repeat(2, 1fr);
+grid-template-rows: repeat(4, auto);
+gap: 10px 0px;
+justify-content: center;
+margin: 0 auto;
+margin-top: 70px;
+}
+
+}
