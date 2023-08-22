@@ -4,7 +4,6 @@ import "../../components/Movies/Movies.css";
 import filmsData from '../../utils/utils';
 import SearchForm from "../../components/Movies/SearchForm/SearchForm";
 import Preloader from './Preloader/Preloader';
-import MoviesCard from "../Movies/MoviesCard/MoviesCard"
 import MoviesCardList from '../Movies/MoviesCardList/MoviesCardList';
 import Footer from '../Footer/Footer';
 function SavedMovies() {
@@ -17,14 +16,10 @@ function SavedMovies() {
       setIsLoading(false);
     }, 1000)
     return (
-      <>
-
+      <main className={'movies'}>
         <SearchForm/>
         {isLoading ? <Preloader/> : <MoviesCardList movies={moviesData} />}
-
-
-<Footer />
-      </>
+      </main>
     );
   }
 

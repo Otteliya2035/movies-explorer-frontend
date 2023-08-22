@@ -18,7 +18,7 @@
     font-style: normal;
     font-weight: 500;
     line-height: normal;
-    margin-right: 34px;
+    /*margin-right: 34px;*/
   }
   .movies__card-duration {
     color: #8b8b8b;
@@ -35,15 +35,15 @@
   }
 
   .movies__card-button-save{
-display: none;
+    display: none;
   }
   .movies__card-like-icon {
-   display: none;
+    display: none;
   }
   .movies__card-button-del {
     position: absolute;
     top: 14px;
-    right: 20px;
+    /*right: 20px;*/
     display: flex;
     align-items: center;
     background-image: url('../../../images/deletebtn.svg');
@@ -57,12 +57,13 @@ display: none;
         .movies__card-button-save {
           position: absolute;
           top: 14px;
-          right: 230px;
+          left: 2202px;
+          /*right: 230px;*/
       }
       .movies__card-like-icon {
           position: absolute;
           top: 14px;
-          right: 230px;
+          /*right: 230px;*/
   }
   }
 

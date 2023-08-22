@@ -1,16 +1,23 @@
 .navtab{
-
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }
 .navtab__list {
   list-style-type: none;
   display: flex;
   flex-direction: row;
   justify-content: center;
-  padding-left: 0;
+  padding: 0;
 }
 
 .navtab__list-item {
+  display: flex;
+  align-items: center;
   margin-right: 10px;
+  justify-content: center;
+  align-items: center;
 }
 
 .navtab__list-item:last-child {
@@ -18,19 +25,21 @@
 }
 
 .navtab__list-item a {
-  display: block;
   width: 96px;
   height: 36px;
   border-radius: 10px;
   background: #303030;
   color: #fff;
-  font-family: Inter;
   font-size: 12px;
   font-style: normal;
   font-weight: 500;
   line-height: 36px;
   text-align: center;
   text-decoration: none;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }
 
 .navtab__list-item a:hover {
@@ -40,15 +49,12 @@
 @media screen and (max-width: 500px) {
   .navtab__list {
     justify-content: center;
-    padding-left: 40px;
   }
 
   .navtab__list-item {
-    margin: 0 5px;
   }
 
   .navtab__list-item a {
-    display: block;
     width: 82px;
     height: 26px;
     border-radius: 6px;
@@ -61,6 +67,5 @@
     text-decoration: none;
   }
   .navtab__list-item:last-child {
-    margin-right: 50px;
   }
 }

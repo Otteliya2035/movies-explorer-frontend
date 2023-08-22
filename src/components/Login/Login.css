@@ -1,22 +1,39 @@
-.login__logo {
-  margin: 40px 789px 20px 442px;
+.login__header-logo {
+}
+
+.login__header {
+  display: flex;
+  max-width: 396px;
+  align-items: flex-start;
+  flex-direction: column;
+  width: 100%;
 }
 .login {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 20px;
+  margin-top: 50px;
 }
 
-.login__title {
+.login__header-title {
   color: #fff;
   font-family: Inter;
   font-size: 24px;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
-  margin-bottom: 40px;
-  margin-right: 220px;
+  max-width: 396px;
+  width: 100%;
+  margin: 40px 0px;
+}
+
+.input-input-error {
+  align-self: flex-start;
+  color: #EE3465;
+  font-size: 11px;
+  position: relative;
+  margin-bottom: 35px;
 }
 
 .login__form {
@@ -24,15 +41,15 @@
   flex-direction: column;
   align-items: center;
   width: 100%;
-  width: 396px;
+  max-width: 396px;
   height: 46px;
   flex-shrink: 0;
   margin-bottom: 20px;
 }
 
 .login__label {
-  width: 396px;
   color: #8b8b8b;
+  align-self: flex-start;
   font-family: Inter;
   font-size: 10px;
   font-style: normal;
@@ -47,18 +64,19 @@
   padding: 10px;
   border-radius: 8px;
   background: #2f2f2f;
-  margin-bottom: 35px;
+  color: white;
 }
 
 .login__button {
-  padding: 13px 178px 15px 176px;
+  padding: 13px 0px;
   color: white;
   cursor: pointer;
-  width: 396px;
+  width: 100%;
   height: 45px;
   border-radius: 3px;
   background: #4285f4;
   margin-top: 145px;
+  border: none;
 }
 
 .login__signup-text {

@@ -18,13 +18,12 @@ function Movies() {
     setTimeout(() => {
       setIsLoading(false);
     }, 1000)
+
     return (
-      <>
-{ /*      <Header isLoggedIn={isLoggedIn} />*/}
+      <main className={'movies'}>
         <SearchForm/>
         {isLoading ? <Preloader/> : <MoviesCardList movies={moviesData} />}
-<Footer />
-      </>
+      </main>
     );
   }
 

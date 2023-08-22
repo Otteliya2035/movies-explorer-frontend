@@ -1,15 +1,31 @@
+.portfolio {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 100px;
+  padding: 0 70px;
+}
+
+.portfolio__link {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  text-decoration: none;
+}
 .portfolio__title {
   color: #8b8b8b;
   font-size: 18px;
   font-weight: 400;
   line-height: 20px;
   margin-bottom: 50px;
-  margin-left: 70px;
+  max-width: 1140px;
+  width: 100%;
 }
 .portfolio__list {
-  list-style-type: none;
-  margin-left: 45px;
-  margin-right: 60px;
+  width: 100%;
+  max-width: 1140px;
   list-style-type: none;
   padding: 0;
 }
@@ -22,20 +38,22 @@
   font-weight: 400;
   line-height: 50px;
   letter-spacing: -1.2px;
-  margin-bottom: 40px;
-  margin-left: 23px;
   border-bottom: 1px solid rgba(170, 170, 170, 0.6);
   margin-bottom: 30px;
 }
 .portfolio__list-item:last-child {
   border-bottom: none;
 }
-.portfolio__img {
+.portfolio__link-img {
   width: 20px;
   height: 20px;
   margin-left: 70px;
 }
 @media screen and (max-width: 768px){
+  .portfolio {
+    margin-top: 90px;
+    padding: 0 50px;
+  }
   .portfolio__list-item {
     font-size: 28px;
     font-weight: 400;
@@ -46,21 +64,25 @@
     padding-bottom: 19px;
   }
   .portfolio__title{
-    margin-left: 50px;
+    /*margin-left: 50px;*/
   }
 
     .portfolio__list {
-      margin-left: 26px;
-      margin-right: 37px;
+      /*margin-left: 26px;*/
+      /*margin-right: 37px;*/
       margin-top: 50px;
 }
 }
 
-@media screen and (max-width: 500px){
+@media screen and (max-width: 578px){
+  .portfolio {
+    padding: 0 14px;
+    margin-top: 70px;
+  }
   .portfolio__title{
     font-size: 14px;
-    margin-left: 14px;
-    margin-top: 0px;
+    /*margin-left: 14px;*/
+    margin-bottom: 0;
   }
   .portfolio__list-item {
     font-size: 18px;
@@ -71,11 +93,11 @@
   .portfolio__img {
     width: 10px;
     height: 10px;
-    margin-left: 14px;
+    /*margin-left: 14px;*/
   }
   .portfolio__list {
-    margin-left: 0px;
-    margin-right: 14px;
+    /*margin-left: 0px;*/
+    /*margin-right: 14px;*/
     margin-top: 40px;
 }
 }

@@ -4,13 +4,15 @@ import '../MoviesCardList/MoviesCardList.css';
 
 function MoviesCardList({ movies }) {
   return (
-    <section className="movies">
-    <div className="movies__card-list">
-      {movies.map((movie, index) => (
-        <MoviesCard key={index} movie={movie} />
-      ))}
-    </div>
-    <button className='movies__btn'>Ещё</button>
+    <section className="movies__cards">
+      <ul className="movies__cards-list">
+        {movies.map((movie, index) => (
+          <li key={index} className="movies__card-item">
+            <MoviesCard movie={movie} />
+          </li>
+        ))}
+      </ul>
+      <button type={'button'} className='movies__btn'>Ещё</button>
     </section>
   );
 }

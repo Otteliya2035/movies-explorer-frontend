@@ -14,14 +14,14 @@ function MoviesCard({ movie }) {
   </div>
   {movie.isLiked ? (
     <div className="movies__card-buttons">
-      <button className="movies__card-button-del">
+      <button type='button' className="movies__card-button-del">
         <img src={deletebtn} alt="Удалить" className="movies__card-button-icon" />
       </button>
       <img src={Like} alt="Лайк" className="movies__card-like-icon" />
     </div>
   ) : (
     <div className="movies__card-buttons">
-      <button className="movies__card-button-save">Сохранить</button>
+      <button type={'button'} className="movies__card-button-save">Сохранить</button>
     </div>
   )}
 </div>

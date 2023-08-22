@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import logo from "../../images/logo.svg";
 import "../../components/Header/Header.css"
@@ -7,33 +7,60 @@ import Register from '../Register/Register';
 import Login from '../Login/Login';
 import Navigation from "../Navigation/Navigation"
 import BurgerMenu from '../../components/Header/BurgerMenu/BurgerMenu';
+import Popup from "./Popup/Popup";
+
+import PopupImage from '../../images/popup__open-button.svg'
+
 function Header({isLoggedIn}) {
   const navigate = useLocation()
-  const isMobile = window.innerWidth <= 768;
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768)
+
+  const [isOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+    function handleResize() {
+      setIsMobile(window.innerWidth <= 768);
+    }
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   if( navigate.pathname === '/signin' || navigate.pathname === '/signup' || navigate.pathname === '/no-results' ) {
     return
   }
-  const isAuth = isLoggedIn;
+
+
+  function handlePopupClick() {
+    setIsOpen(!isOpen);
+  }
+
  return (
 
     <header className="header">
           <Link to="/" className="header__logo">
             <img src={logo} alt="Логотип" className="header__logo-image" />
           </Link>
-          {isMobile ? <BurgerMenu /> : (isAuth && <Navigation />)}
-
-        <div className="header__container">
-          {!isAuth ? (
-            <>
-              <Link to="/signup" className="header__container-link">
-                Регистрация
-              </Link>
-              <Link to="/signin"> <button className='header__container-button'>Войти</button> </Link>
-            </>
-          ) : (
-            <Navigation />
-          )}
-        </div>
+              <div className="header__container">
+                {!isLoggedIn ? (
+                  <div className="header__container-wrapper">
+                    <Link to="/signup" className="header__container-link">
+                      Регистрация
+                    </Link>
+                    <Link to="/signin"> <button className='header__container-button'>Войти</button> </Link>
+                  </div>
+                ) : (
+                  isMobile
+                    ? <button type='button' className='button nav-auth__popup-button' onClick={handlePopupClick}><img className='nav-auth__popup-img' src={PopupImage} alt='Иконка меню' /></button>
+                    : (
+                  <Navigation />
+                    )
+                )}
+              </div>
+          <Popup isOpen={isOpen} onClose={handlePopupClick} />
 
     </header>
   );

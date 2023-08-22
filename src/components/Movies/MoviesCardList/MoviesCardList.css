@@ -1,45 +1,61 @@
-
-.movies__card-list {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(4, auto);
-    gap: 10px 0px;
-    justify-content: center;
-    margin: 0 auto;
+.movies__cards {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     margin-top: 70px;
-  }
+}
+.movies__cards-list {
+    list-style: none;
+    width: 100%;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 360px);
+    justify-content: center;
+    max-width: 1140px;
+    column-gap: 30px;
+    row-gap: 29px;
+}
 
   .movies__btn{
     width: 320px;
-height: 36px;
-background-color: #424242;
-color: #FFF;
-text-align: center;
-font-size: 12px;
-font-weight: 500;
-line-height: normal;
-cursor: pointer;
-margin: 0 auto;
-display: flex;
-
-margin-top: 50px;
+    height: 36px;
+    background-color: #202020;
+    color: #FFF;
+    text-align: center;
+    align-items: center;
+      justify-content: center;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: normal;
+    cursor: pointer;
+    margin: 0 auto;
+    display: flex;
+    border-radius: 6px;
+    margin-top: 50px;
+      border: 1px solid #424242;
 
   }
 
   @media screen and (max-width:1220px) {
 
-    .movies__card-list {
-      grid-template-columns: repeat(2, 1fr); /* 2 колонки по 4 карточки */
-    }
+    /*.movies__card-list {*/
+    /*  grid-template-columns: repeat(2, 1fr); !* 2 колонки по 4 карточки *!*/
+    /*}*/
 
     /* Скрыть последние 4 фильма */
-    .movies__card-list :nth-child(n+9) {
+    .movies__cards-list :nth-child(n+9) {
       display: none;
     }
     .movies__btn{
 
     }
   }
+
+@media (max-width: 380px) {
+    .movies__cards-list {
+        grid-template-columns: repeat(auto-fit, 300px);
+    }
+}
 
 
 

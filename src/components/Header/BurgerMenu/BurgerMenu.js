@@ -10,14 +10,14 @@ const BurgerMenu = () => {
 
   return (
     <div className={`burger-menu ${isOpen ? 'open' : ''}`}>
-      <button className="burger-menu__button" onClick={toggleMenu}>
+      <button type={'button'} type='button' className="burger-menu__button" onClick={toggleMenu}>
         <div className="burger-menu__icon">
           <div className="burger-menu__bar"></div>
           <div className="burger-menu__bar"></div>
           <div className="burger-menu__bar"></div>
         </div>
       </button>
-      <button className="burger-menu__close-button" onClick={toggleMenu}></button>
+      <button type='button' className="burger-menu__close-button" onClick={toggleMenu}></button>
       <div className="burger-menu__content">
         <nav className="burger-menu__nav">
           <ul className="burger-menu__list">

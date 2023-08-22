@@ -2,6 +2,7 @@
     display: flex;
     justify-content: center;
     margin-top: 29px;
+    align-items: center;
   }
   .filter__checkbox {
     width: 36px;

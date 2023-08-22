@@ -7,15 +7,13 @@ import Footer from "../Footer/Footer"
 import "../../components/Main/Main.css"
 function Main() {
     return (
-        <>
-        
-        < Promo />
-       <AboutProject/>
-       <Techs/>
-       <AboutMe/>
-        <Portfolio />
-        <Footer />
-        </>
+        <main className={'main'}>
+          <Promo />
+          <AboutProject/>
+          <Techs/>
+          <AboutMe/>
+          <Portfolio />
+        </main>
     )
 };
 
