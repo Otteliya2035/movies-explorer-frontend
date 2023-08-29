@@ -4,7 +4,7 @@
 }
 .movies__card-image {
   width: 360px;
-  height: auto;
+  height: 200px;
 }
 .movies__card-content {
   display: flex;
@@ -70,11 +70,21 @@
   opacity: 0.7;
 }
 .movies__card-button-del {
-  display: none;
+  background-color: transparent;
+  outline: none;
+  border: none;
+  position: absolute;
+  top: 14px;
+  right: 20px;
+  display: flex;
+  align-items: center;
 }
 .movies__card-button-icon {
   width: 21px;
   height: 21px;
+  border: none;
+  outline: none;
+  background-color: transparent;
 }
 @media screen and (max-width: 1220px) {
     .movies__card-image {
@@ -83,13 +93,13 @@
       .movies__card-button-save {
         position: absolute;
         top: 14px;
-        right: 40px;
+        right: 0px;
 
       }
     .movies__card-like-icon {
         position: absolute;
         top: 14px;
-      right: 40px;
+      right: 0px;
 
     }
 }

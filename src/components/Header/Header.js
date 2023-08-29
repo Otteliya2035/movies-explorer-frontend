@@ -1,17 +1,16 @@
 
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import logo from "../../images/logo.svg";
 import "../../components/Header/Header.css"
-import Register from '../Register/Register';
-import Login from '../Login/Login';
 import Navigation from "../Navigation/Navigation"
-import BurgerMenu from '../../components/Header/BurgerMenu/BurgerMenu';
 import Popup from "./Popup/Popup";
 import {routes} from "../../contstrains/routes";
 import PopupImage from '../../images/popup__open-button.svg'
+import {UserContext} from "../../contexts/user";
 
-function Header({isLoggedIn}) {
+function Header() {
+  const { isLoggedIn } = useContext(UserContext);
   const navigate = useLocation()
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768)
 

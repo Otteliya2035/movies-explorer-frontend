@@ -79,6 +79,10 @@
   border: none;
 }
 
+.login__button:disabled {
+  opacity: 0.3;
+}
+
 .login__signup-text {
   color: #8b8b8b;
   text-align: center;

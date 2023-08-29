@@ -85,6 +85,11 @@
   margin-top: 55px;
   cursor: pointer;
 }
+
+.registration__button:disabled {
+  opacity: 0.3;
+
+}
 .registration__login-text {
   color: #8b8b8b;
   text-align: center;

@@ -44,9 +44,6 @@
     /*}*/
 
     /* Скрыть последние 4 фильма */
-    .movies__cards-list :nth-child(n+9) {
-      display: none;
-    }
     .movies__btn{
 
     }
