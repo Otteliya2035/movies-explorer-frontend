@@ -86,31 +86,28 @@ function Movies() {
     setCurrentPage(1);
   }, []);
 
-  const handleSearch = (name, shorts) => {
+  const handleSearch = async (name, shorts) => {
     setIsLoading(true);
-    const storageMovies = localStorage.getItem('movies');
 
-    if (!storageMovies) {
-      const fetchFilms = async () => {
-        try {
-          const data = await moviesApi.getFilms().finally(() => setIsLoading(false));
+    const storageMovies = localStorage.getItem('movies'); // Сохраняем переменную
 
-          if (data.length > 0) {
-            localStorage.setItem('movies', JSON.stringify(data));
-            setFilteredMovies(data);
-            setError('');
-          }
-        } catch (error) {
-          setError('Проблема при загрузке фильмов');
+    try {
+      if (!storageMovies) {
+        const data = await moviesApi.getFilms();
+
+        if (data.length > 0) {
+          localStorage.setItem('movies', JSON.stringify(data));
+          setFilteredMovies(data);
+          setError('');
         }
-      };
-
-      fetchFilms()
-    } else {
+      }
+    } catch (error) {
+      setError('Проблема при загрузке фильмов');
+    } finally {
       setIsLoading(false);
     }
 
-    filter(name, shorts);
+    filter(name, shorts); // Вызываем filter после успешного выполнения запроса
   };
 
   const handleLoadMore = (e) => {
