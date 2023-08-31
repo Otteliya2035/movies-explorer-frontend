@@ -46,6 +46,51 @@ function Movies() {
     const storageMovies = localStorage.getItem('movies');
 
     if (!storageMovies) {
+      setIsLoading(false);
+    }
+
+    const fetchSavedFilms = async () => {
+      // const storagedMovies = localStorage.getItem('movies');
+      // if(storagedMovies) {
+        try {
+          const token = localStorage.getItem('jwt');
+          await mainApi.getSavedMovies(token).then(
+            res => {
+              setSavedFilms(res)
+            }
+          );
+        } catch (err) {
+          alert('Не удалось подгрузить сохранённые фильмы')
+        }
+      // }
+
+
+    }
+    fetchSavedFilms()
+
+    const name = localStorage.getItem('searchFilm');
+    const shorts = JSON.parse(localStorage.getItem('shorts'));
+
+    if(name || shorts) {
+      filter(name, shorts);
+    } else {
+      setIsLoading(false)
+    }
+  }, []);
+
+  const filter = useMemo(() => (name, shorts) => {
+    const storedMovies = JSON.parse(localStorage.getItem('movies')) || [];
+    const filtered = searchFilter(storedMovies, name, shorts);
+    setError(filtered.length === 0 ? 'Ничего не найдено' : '');
+    setFilteredMovies(filtered);
+    setCurrentPage(1);
+  }, []);
+
+  const handleSearch = (name, shorts) => {
+    setIsLoading(true);
+    const storageMovies = localStorage.getItem('movies');
+
+    if (!storageMovies) {
       const fetchFilms = async () => {
         try {
           const data = await moviesApi.getFilms().finally(() => setIsLoading(false));
@@ -65,40 +110,6 @@ function Movies() {
       setIsLoading(false);
     }
 
-    const fetchSavedFilms = async () => {
-      const storagedMovies = localStorage.getItem('movies');
-      if(storagedMovies) {
-        try {
-          const token = localStorage.getItem('jwt');
-          await mainApi.getSavedMovies(token).then(
-            res => {
-              setSavedFilms(res)
-            }
-          );
-        } catch (err) {
-          alert('Не удалось подгрузить сохранённые фильмы')
-        }
-      }
-
-
-    }
-    fetchSavedFilms()
-
-    const name = localStorage.getItem('searchFilm');
-    const shorts = JSON.parse(localStorage.getItem('shorts'));
-    filter(name, shorts);
-  }, []);
-
-  const filter = useMemo(() => (name, shorts) => {
-    const storedMovies = JSON.parse(localStorage.getItem('movies')) || [];
-    const filtered = searchFilter(storedMovies, name, shorts);
-    setError(filtered.length === 0 ? 'Ничего не найдено' : '');
-    setFilteredMovies(filtered);
-    setCurrentPage(1);
-  }, []);
-
-  const handleSearch = (name, shorts) => {
-
     filter(name, shorts);
   };
 
@@ -115,7 +126,8 @@ function Movies() {
           ? <Preloader/>
           : <>
               <MoviesCardList setVisibleMovies={setVisibleMovies} savedFilms={savedFilms} setSavedFilms={setSavedFilms} cards={visibleMovies} />
-              <button type={'button'} className='movies__btn' onClick={handleLoadMore}>Ещё</button>
+            {visibleMovies.length && (visibleMovies.length !== filteredMovies.length) && <button type={'button'} className='movies__btn' onClick={handleLoadMore}>Ещё</button>}
+
             </>
         }
       </main>

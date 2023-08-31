@@ -15,21 +15,26 @@ function SearchForm({ handleSearch }) {
   const { pathname } = useLocation();
 
   const handleShortFilter = () => {
-    if(errors.searchInput) return;
 
     setShortFilter(!shortFilter);
-    handleSearch(searchInput, !shortFilter);
-    if (pathname === '/movies') {
-      localStorage.setItem('shorts', String(!shortFilter));
-    }
+
   };
 
   const findFilm = (e) => {
     e.preventDefault();
+    if(errors.searchInput || !searchInput) return;
+
 
     if (pathname === '/movies') {
       localStorage.setItem('searchFilm', searchInput);
+      if(shortFilter) {
+        localStorage.setItem('shorts', String(shortFilter));
+      } else {
+        localStorage.setItem('shorts', String(false));
+      }
     }
+
+
     handleSearch(searchInput, shortFilter);
   };
 
@@ -44,6 +49,7 @@ function SearchForm({ handleSearch }) {
       if (savedShorts) {
         setShortFilter(savedShorts);
       }
+      console.log(savedInputValue && savedShorts)
       if (savedInputValue || savedShorts) {
         handleSearch(savedInputValue, savedShorts);
       }
@@ -55,8 +61,9 @@ function SearchForm({ handleSearch }) {
       <form className="searchform__container" onSubmit={findFilm}>
         <div className="searchform__container-inputs">
           <input type="text" placeholder="Фильм" name='searchInput' value={searchInput || ''} onChange={handleChange} required className="searchform__input" />
-          <button className="searchform__button" type='submit'></button>
+          <button className="searchform__button" type='submit' disabled={!isValid || !searchInput}></button>
         </div>
+        <p className={'searchform__error'}>{errors.searchInput}</p>
         <FilterCheckbox shortFilter={shortFilter} setShortFilter={handleShortFilter} />
 
       </form>

@@ -59,8 +59,8 @@
 }
 .movies__card-like-icon {
   position: absolute;
-  top: 14px;
-  right: 20px;
+  top: 5px;
+  right: 0px;
   display: flex;
   align-items: center;
   cursor: pointer;

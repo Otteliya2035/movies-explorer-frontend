@@ -7,7 +7,7 @@ function MoviesCardList({ setVisibleMovies, cards, savedFilms, setSavedFilms }) 
     <section className="movies__cards">
       <ul className="movies__cards-list">
         {cards.length ? cards.map((card, index) => (
-          <li key={index} className="movies__card-item">
+          <li key={card.movieId || card.id} className="movies__card-item">
             <MoviesCard setVisibleMovies={setVisibleMovies}
                         setSavedFilms={setSavedFilms}
                         savedFilms={savedFilms}

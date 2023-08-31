@@ -76,7 +76,6 @@ function MoviesCard({ setVisibleMovies, card, savedFilms, setSavedFilms }) {
   };
 
   const handleRemoveLike = async () => {
-    console.log(card);
     const token = localStorage.getItem('jwt')
     await mainApi.removeMovie(card._id, token).then(() => {
         setSavedFilms(prevFilms => prevFilms.filter(savedFilm => savedFilm._id !== card._id));
@@ -91,22 +90,25 @@ function MoviesCard({ setVisibleMovies, card, savedFilms, setSavedFilms }) {
 
   return (
     <div className="movies__card">
-  <img src={card.image.url ? `https://api.nomoreparties.co${card.image.url}` : card.image} alt={`Название фильма ${card.nameRU}`} className="movies__card-image" />
+      <a href={card.trailerLink} target="_blank">
+        <img src={card.image.url ? `https://api.nomoreparties.co${card.image.url}` : card.image} alt={`Название фильма ${card.nameRU}`} className="movies__card-image" />
+      </a>
   <div className="movies__card-content">
     <h2 className="movies__card-title">{card.nameRU}</h2>
     <p className="movies__card-duration">{hours}h:{minutes}m</p>
   </div>
   {location.pathname  === '/saved-movies' ? (
     <div className="movies__card-buttons">
+
       <button type='button' className="movies__card-button-del" onClick={handleRemoveLike}>
-        <img src={Like} alt="Лайк" className="movies__card-like-icon" />
+        <img src={deletebtn} alt="Удалить" className="movies__card-button-icon" />
       </button>
     </div>
   ) : (
     <div className="movies__card-buttons">
       {like ? <><button type='button' className="movies__card-button-del" onClick={handleLikeClick}>
-        <img src={deletebtn} alt="Удалить" className="movies__card-button-icon" />
-      </button> </> : <button type={'button'} className="movies__card-button-save" onClick={handleLikeClick}>Сохранить</button>
+        <img src={Like} alt="Лайк" className="movies__card-like-icon" />
+      </button></> : <button type={'button'} className="movies__card-button-save" onClick={handleLikeClick}>Сохранить</button>
       }
 
     </div>
