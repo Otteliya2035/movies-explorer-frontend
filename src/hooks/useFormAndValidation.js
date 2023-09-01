@@ -7,9 +7,17 @@ export function useFormAndValidation() {
 
   const handleChange = (e) => {
     const { name, value } = e.target
+
     setValues({ ...values, [name]: value });
-    setErrors({ ...errors, [name]: e.target.validationMessage || '' });
-    setIsValid(e.target.closest('form').checkValidity());
+    if(name === 'email') {
+      const pattern = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$/;
+      const isValid = pattern.test(value);
+      setErrors({ ...errors, [name]: !isValid ?  'Неверный формат Email' : '' });
+      setIsValid(isValid)
+    } else {
+      setErrors({ ...errors, [name]: e.target.validationMessage || '' });
+      setIsValid(e.target.closest('form').checkValidity());
+    }
   };
 
   const resetForm = useCallback((newValues = {}, newErrors = {}, newIsValid = false) => {

@@ -1,26 +1,23 @@
-import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 import '../../index.css';
 import Header from '../../components/Header/Header';
 import Footer from '../Footer/Footer';
-import NoResults from '../NoResults/NoResults';
-import React, { useState } from 'react';
+import React from 'react';
 import '../App/App.css';
-import {routes} from "../../contstrains/routes";
+import {UserProvider} from "../../contexts/user";
+import RouterComponent from "./RoutesComponent/RouterComponent";
 
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
-
   return (
     <Router>
-      <div className="page">
-      <Header isLoggedIn={isLoggedIn}/>
-        <Routes>
-          {routes.map(item => <Route key={item.path} path={item.path} element={item.component} /> )}
-          <Route path="*" element={<NoResults/>} />
-        </Routes>
-        <Footer />
-      </div>
+        <div className="page">
+          <UserProvider>
+            <Header />
+              <RouterComponent />
+            <Footer />
+          </UserProvider>
+        </div>
     </Router>
   );
 }

@@ -1,23 +1,70 @@
 import "../Profile/Profile.css"
-import {useState} from "react";
+import {useContext, useEffect, useState} from "react";
 import {useFormAndValidation} from "../../hooks/useFormAndValidation";
 import {NavLink} from "react-router-dom";
+import {UserContext} from "../../contexts/user";
+import mainApi from "../../utils/api/MainApi";
 function Profile() {
-  const [userName, setUserName] = useState();
-  const [userEmail, setUserEmail] = useState();
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const { values, handleChange, errors, setIsValid, isValid, setValues, setErrors } = useFormAndValidation();
+
+  const { values, handleChange, errors, setIsValid, setValues, isValid } = useFormAndValidation();
 
   const { email, name } = values;
 
+  const { logout, userData, setUserData } = useContext(UserContext);
 
-  const handleSubmitChanges = () => {
+  useEffect(() => {
+    setValues({email: userData.email, name: userData.name})
+  }, [userData])
 
+  useEffect(() => {
+    if ((!email && !name)) {
+      setIsValid(false)
+    }
+
+    if((userData.name === name && userData.email === email) ) {
+      setIsValid(false)
+    }
+  }, [email, name, setIsValid, isSubmitting, userData])
+
+  const handleSubmitChanges = (e) => {
+    e.preventDefault();
+
+    if (isSubmitting) {
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    if (userData.name === name && userData.email === email) {
+      setIsSubmitting(false);
+      return;
+    }
+    const token = localStorage.getItem('jwt');
+
+    mainApi.editCurrentUserInfo(token, {name, email}).then((res) => {
+      alert('Вы успешно изменили данные!')
+      setUserData(res)
+    }).catch((err) => {
+      if(err.status === 409) {
+        alert('Такой Email уже зарегистрирован')
+      } else {
+        alert('Ошибка при изменении данных.')
+      }
+      console.log(err)
+    }).finally(() => {
+      setIsSubmitting(false);
+    });
+  }
+
+  const handleExit = () => {
+    logout();
   }
     return (
       <main>
         <section className="profile">
-            <h1 className='profile__title'>Привет, Виталий!</h1>
+            <h1 className='profile__title'>Привет, {userData.name}!</h1>
             <form className='profile__form' onSubmit={handleSubmitChanges}>
               <div className='profile__input-container'>
                 <div className='profile__input-wrapper'>
@@ -50,7 +97,7 @@ function Profile() {
                     className='profile__input'
                     name='email'
                     value={email}
-                    pattern='^.+@.+\..+$'
+                    // pattern='^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$'
                     minLength='2'
                     maxLength='30'
                     onChange={handleChange}
@@ -65,8 +112,8 @@ function Profile() {
 
 
               <div className='profile__buttons'>
-                <button type='submit' className='link profile__button profile__button_type_edit' >Редактировать</button>
-                <NavLink className='profile__button profile__button_type_exit' to='/' >
+                <button type='submit' className='link profile__button profile__button_type_edit' disabled={!isValid}>Редактировать</button>
+                <NavLink className='profile__button profile__button_type_exit' to='/' onClick={handleExit}>
                   Выйти из профиля
                 </NavLink>
               </div>

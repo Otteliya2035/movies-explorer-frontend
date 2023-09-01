@@ -1,13 +1,34 @@
-import { Link } from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 import '../Login/Login.css';
 import "../Login/Login.css"
 import {useFormAndValidation} from "../../hooks/useFormAndValidation";
 import Logo from "../Logo/Logo";
-function Login({ setIsLoggedIn }) {
+import {useContext, useEffect} from "react";
+import {UserContext} from "../../contexts/user";
+function Login() {
 
-  const { values, handleChange, errors, setIsValid, isValid, setValues, setErrors } = useFormAndValidation();
+  const { values, handleChange, errors, setIsValid, isValid } = useFormAndValidation();
 
-  const { password, email } = values;
+  const { email, password } = values;
+
+  const { login } = useContext(UserContext);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!email && !password) {
+      setIsValid(false)
+    }
+  }, [email, password, setIsValid])
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const isLoggedIn = await login(email, password);
+
+    if(isLoggedIn) {
+      navigate('/movies');
+    }
+  }
 
   return (
     <main>
@@ -17,7 +38,7 @@ function Login({ setIsLoggedIn }) {
           <h1 className="login__header-title">Рады видеть!</h1>
         </div>
 
-        <form className="login__form">
+        <form className="login__form" onSubmit={handleSubmit}>
           <label htmlFor="email" className="login__label">Email</label>
           <input onChange={handleChange} type="email" name='email' required id="email" pattern='^.+@.+\..+$' value={email} className="login__input" placeholder="Введите ваш email" />
           <span className={'input-input-error'}>
@@ -28,7 +49,7 @@ function Login({ setIsLoggedIn }) {
           <span className={'input-input-error'}>
             {errors.password}
           </span>
-          <button type="submit" className="login__button">Войти</button>
+          <button type="submit" className="login__button" disabled={!isValid}>Войти</button>
           <p className="login__signup-text">Еще не зарегистрированы? <Link to="/signup" className="login__signup-link">Регистрация</Link></p>
         </form>
       </section>

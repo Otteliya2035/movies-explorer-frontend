@@ -30,6 +30,11 @@
   width: 100%;
 }
 
+.searchform__error {
+  color: red;
+  font-size: 13px;
+}
+
 .searchform__input {
   width: 100%;
   height: 50px;
@@ -38,6 +43,7 @@
   /*margin: 75px 14px 0px 60px;*/
   padding: 16px 20px;
   border: none;
+  color: white;
 }
 
 .searchform__button {
@@ -52,6 +58,10 @@
   background-size: cover;
   cursor: pointer;
   align-self: center;
+}
+
+.searchform__button:disabled {
+  opacity: 0.3;
 }
 
 @media screen and (max-width: 768px) {

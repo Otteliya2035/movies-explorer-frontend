@@ -137,7 +137,9 @@
   width: 100%;
   align-items: center;
 }
-
+.profile__button_type_edit:disabled {
+  opacity: 0.3;
+}
 .profile__button_type_edit,
 .profile__signout-button {
 

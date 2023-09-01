@@ -16,13 +16,13 @@ export const routes = [
     {
         path: '/movies',
         name: 'Фильмы',
-        isPublicPage: true,
+        isPublicPage: false,
         component: <Movies />
     },
     {
         path: '/profile',
         name: 'Аккаунт',
-        isPublicPage: true,
+        isPublicPage: false,
         component: <Profile />
     },
     {
@@ -34,7 +34,7 @@ export const routes = [
     {
         path: '/saved-movies',
         name: 'Сохранённые фильмы',
-        isPublicPage: true,
+        isPublicPage: false,
         component: <SavedMovies />
     },
     {
