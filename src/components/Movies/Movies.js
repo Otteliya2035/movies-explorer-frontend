@@ -123,7 +123,7 @@ function Movies() {
           ? <Preloader/>
           : <>
               <MoviesCardList setVisibleMovies={setVisibleMovies} savedFilms={savedFilms} setSavedFilms={setSavedFilms} cards={visibleMovies} />
-            {visibleMovies.length && (visibleMovies.length !== filteredMovies.length) && <button type={'button'} className='movies__btn' onClick={handleLoadMore}>Ещё</button>}
+            {(visibleMovies.length && (visibleMovies.length !== filteredMovies.length)) && <button type={'button'} className='movies__btn' onClick={handleLoadMore}>Ещё</button> || null}
 
             </>
         }
