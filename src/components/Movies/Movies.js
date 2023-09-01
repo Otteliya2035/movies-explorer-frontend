@@ -32,6 +32,7 @@ function Movies() {
       setMoviesPerPage(MOVIES_PER_PAGE_MOBILE);
       setDefaultMoviesPerPage(DEFAULT_MOVIES_PER_PAGE_MOBILE)
     } else if (width <= TABLET_WIDTH) {
+      console.log(width)
       setMoviesPerPage(MOVIES_PER_PAGE_TABLET);
       setDefaultMoviesPerPage(DEFAULT_MOVIES_PER_PAGE_TABLET);
     } else {
